@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <% if photo.like_user(current_user.id) %>
+    <%= link_to photo_likes_path(photo), method: :delete, id: "like-button-#{photo.id}",  class: "link-button" do %>
+      <%= image_tag("heart_red.png", :size => "16x16") %>
+    <% end %>
+  <% else %>
+    <%= link_to photo_likes_path(photo), method: :post, id: "like-button#{photo.id}", class: "link-button" do  %>
+      <%= image_tag("heart_gray.png", :size => "16x16") %>
+    <% end %>
+
+  <% end %>
+<% else %>
+  <%= image_tag("heart_gray.png", :size => "16x16") %>
+    <span>
+      <%= photo.likes_count %>
+    </span>
+<% end %>

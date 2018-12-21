@@ -1,0 +1,28 @@
+<% @user ||= current_user %>
+
+  <div class="stats">
+    <p>
+      <div class="all-photos">
+        <strong id="photo-sum" class="stat" style="font-size: 30px">
+          <%= @user.photos.count %>
+        </strong>
+        Photos
+      </div>
+    </p>
+    <a href="<%= following_user_path(@user) %>">
+      <div class="folloing" style="float: left;  padding-right: 20px;">
+        <strong id="following" class="stat" style="font-size: 30px;">
+          <%= @user.followings.count %>
+        </strong>
+        Following
+      </div>
+    </a>
+    <a href="<%= followers_user_path(@user) %>">
+      <div class="follower" style="float: left;">
+          <strong id="followers" class="stat" style="font-size: 30px">
+            <%= @user.followers.count %>
+          </strong>
+          Followers
+      </div>
+    </a>
+  </div>

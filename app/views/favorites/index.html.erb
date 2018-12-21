@@ -1,0 +1,37 @@
+<h1>aaa</h1>
+
+
+
+<div class="container">
+	<div class = "row">
+        <div class= "col-md-2">
+            <div class= "sidebar">
+              <% @user.followings.each do |user| %>
+				<table>
+				<tr>
+				  <td>  <%= user.name %> </td>
+				  <td><%= link_to '詳細', user_path(user) %></td>
+				</tr>
+
+				</table>
+				<% end %>
+            </div>
+          </div>
+
+        <div class= "col-md-10">
+
+			<% @photos.each do |photo| %>
+
+					<div class="col-md-4" >
+
+						<div class = "card photo-card">
+							<%= attachment_image_tag photo, :image, :fill, 300, 300, format: 'jpeg',class: "card-img-top" %>
+							<div class="card-body"><%= photo.user.name %></div>
+							<%= link_to "show", photo_path(photo.id), class: "btn btn-danger" %>
+						</div>
+
+					</div>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-mid-3">
+
+			<h3>写真投稿フォーム</h3>
+
+			<%= form_for(@photo) do |f| %>
+						<p>写真の選択</p>
+						<%= f.attachment_field :image %>
+
+						<p>タグ</p>
+						<%= f.text_field :tag_list, value: @photo.tag_list.join(','), "data-role" => "tagsinput", class: "form-control" %>
+
+						<%= f.submit '投稿',class: "post-button" %>
+
+			<% end %>
+		</div>
+		<div class="col"></div>
+	</div>
+</div>

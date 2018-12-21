@@ -1,0 +1,16 @@
+<div class= "sidebar">
+  <h4>Hot Tags</h4>
+  <% @tags.each do |tag| %>
+  	<%= link_to tag.name, tag_show_path(:tag_name => tag.name), class: "badge badge-pill badge-secondary" %>
+  <% end %>
+  <h4>Hot Photographer</h4>
+  <% @users.each do |user| %>
+  	<div>
+    	<%= user.name %>
+    	<span>
+    		<i class="fas fa-user"></i>
+    		<%= user.followers.count %>
+    	</span>
+   </div>
+  <% end %>
+</div>

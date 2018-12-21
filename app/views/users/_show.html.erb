@@ -1,0 +1,42 @@
+<div class="container">
+	<div class = "row">
+        <div class= "col-md-4">
+            <div class= "sidebar">
+              <h2><%= @user.name %></h2>
+              <p><%= @user.introduction %></p>
+              <p><i class="fas fa-camera"></i>         Canon EOS</p>
+              <%= render 'follow_form' %>
+　　　		  <%= render 'stats' %>
+			  <%= month_calendar(attribute: :created_at, events: @calendar_photos) do |date,photos| %>
+  				<% if photos.count > 0 %>
+	  				<span class="count"><%= photos.count %>枚</span>
+	  				<span>G</span>
+  				<% end %>
+			  <% end %>
+            </div>
+          </div>
+		<div class="col-md-8">
+			<p class="fukidashi">2018/12/21</p>
+        	<%= link_to user_path(@user),class:"btn btn-dark" do %>
+        		<span><%= image_tag("photo-iconn.png", :size => "14x14") %></span>
+        		<span>PHOTOS</span>
+        	<% end %>
+        	<%= link_to user_favorite_photos_path(@user),class:"btn btn-dark" do %>
+        		<span><%= image_tag("heart_red.png", :size => "14x14") %></span>
+        		<span>FAVORITE PHOTOS</span>
+        	<% end %>
+			<div class="row">
+				<% @photos.each do |photo| %>
+						<div class="col-md-5 content">
+							<div class = "card photo-card border border-0">
+								<%= link_to attachment_image_tag(photo, :image, :fill, 600, 400, format: 'jpeg',class: "card-img-top"), photo_path(photo.id) %>
+								<div class="card-text">
+									<%= render 'photos_tag_list', tag_list: photo.tag_list %>
+								</div>
+							</div>
+						</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

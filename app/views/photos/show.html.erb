@@ -1,0 +1,5 @@
+<%= render 'likes/like', { photo: @photo} %>
+
+<%= attachment_image_tag @photo, :image, :fill, 500, 500, format: 'jpeg' %>
+
+<%= link_to @photo.user.name, user_path(@photo.user) %>
