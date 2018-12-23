@@ -2,26 +2,26 @@
 	<div class = "row">
         <div class= "col-md-4">
             <div class= "sidebar">
-              <h2><%= @user.name %></h2>
-              <p><%= @user.introduction %></p>
-              <p><i class="fas fa-camera"></i>         Canon EOS</p>
-              <%= render 'follow_form' %>
-　　　		  <%= render 'stats' %>
-			  <%= month_calendar(attribute: :created_at, events: @calendar_photos) do |date,photos| %>
+            	<% if @user.id == current_user.id %>
+            		<%= link_to "編集",edit_user_path(@user),class: "btn btn-primary btn-sm edit-btn" %>
+            	<% end %>
+				<%= render 'follow_form' %>
+				<h2><%= @user.name %></h2>
+				<p><%= @user.introduction %></p>
+				<% unless @user.camera.blank? %>
+					<p><i class="fas fa-camera"></i>              <%= @user.camera %></p>
+				<% end %>
+				<%= render 'stats' %>
+				<%= month_calendar(attribute: :created_at, events: @calendar_photos) do |date,photos| %>
   				<% if photos.count > 0 %>
-	  				<span class="count"><%= photos.count %>枚</span>
-	  				<span>G</span>
+	  				<div class="count"><%= photos.count %>枚</div>
   				<% end %>
 			  <% end %>
             </div>
           </div>
 		<div class="col-md-8">
-			<p class="fukidashi">2018/12/21</p>
-        	<%= link_to user_path(@user),class:"btn btn-dark" do %>
-        		<span><%= image_tag("photo-iconn.png", :size => "14x14") %></span>
-        		<span>PHOTOS</span>
-        	<% end %>
-        	<%= link_to user_favorite_photos_path(@user),class:"btn btn-dark" do %>
+        	<%= link_to "PHOTOS", user_path(@user),class:"btn btn-dark" %>
+        	<%= link_to user_favorite_photos_path(@user),class:"btn btn-outline-dark" do %>
         		<span><%= image_tag("heart_red.png", :size => "14x14") %></span>
         		<span>FAVORITE PHOTOS</span>
         	<% end %>

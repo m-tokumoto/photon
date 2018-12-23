@@ -12,13 +12,14 @@
 //
 
 
+//= require ckeditor/init
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require bootstrap-tagsinput.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require bootstrap-tagsinput
 //= require_tree .
 
 

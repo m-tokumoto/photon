@@ -1,9 +1,9 @@
 <div class= "sidebar">
-  <h4>Hot Tags</h4>
+  <h6>人気のタグ</h6>
   <% @tags.each do |tag| %>
   	<%= link_to tag.name, tag_show_path(:tag_name => tag.name), class: "badge badge-pill badge-secondary" %>
   <% end %>
-  <h4>Hot Photographer</h4>
+  <h6>人気のユーザー</h6>
   <% @users.each do |user| %>
   	<div>
     	<%= user.name %>

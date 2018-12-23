@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+	before_action :correct_user,   only: [:edit, :update]
+
 	def show
 		@user  = User.find(params[:id])
-		@calendar_photos = Photo.where(user_id: current_user.id)
+		@calendar_photos = Photo.where(user_id: params[:id])
 		@photos = Photo.where(user_id: @user.id)
 	end
 
@@ -21,8 +23,8 @@ class UsersController < ApplicationController
 
 	def favorite
 		@user  = User.find(params[:user_id])
-		@photos = @user.like_photos
 		@calendar_photos = Photo.where(user_id: @user.id)
+		@photos = @user.like_photos
 	end
 
 	def following
@@ -37,9 +39,15 @@ class UsersController < ApplicationController
     	render 'show_follower'
   	end
 
+  	def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless @user == current_user
+    end
+
   	private
 
   	def user_params
-  		params.require(:user).permit(:name, :email, :introduction)
+  		params.require(:user).permit(:name, :email, :camera, :introduction)
   	end
+
 end

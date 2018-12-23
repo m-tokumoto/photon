@@ -3,7 +3,7 @@
 
   var defaultOptions = {
     tagClass: function(item) {
-      return 'label label-info';
+      return 'badge badge-info';
     },
     itemValue: function(item) {
       return item ? item.toString() : item;
@@ -18,7 +18,7 @@
     addOnBlur: true,
     maxTags: undefined,
     maxChars: undefined,
-    confirmKeys: [13, 44],
+    confirmKeys: [13,44],
     delimiter: ',',
     delimiterRegex: null,
     cancelConfirmKeysOnEmpty: true,

@@ -69,3 +69,4 @@ gem 'jquery-rails'
 gem "simple_calendar", "~> 2.0"
 gem 'acts-as-taggable-on'
 gem 'bootstrap-tagsinput-rails'
+gem 'ckeditor'

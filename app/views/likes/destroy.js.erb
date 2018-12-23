@@ -1,1 +1,1 @@
-$("#like-button").html("<%= j(render "like", { photo: @photo, likes: @likes } ) %>");
+$("#like-button-<%= @photo.id %>").html("<%= j(render "like", { photo: @photo, likes: @likes } ) %>");

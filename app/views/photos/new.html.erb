@@ -12,7 +12,7 @@
 						<p>タグ</p>
 						<%= f.text_field :tag_list, value: @photo.tag_list.join(','), "data-role" => "tagsinput", class: "form-control" %>
 
-						<%= f.submit '投稿',class: "post-button" %>
+						<input type="button" onclick="submit();" value="投稿" />
 
 			<% end %>
 		</div>

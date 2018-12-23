@@ -28,6 +28,10 @@
  	background-image: image-url("be-ju.jpg");
  }
 
+.main-content{
+  padding-top: 20px;
+}
+
 .photo-card.card {
   background-color: transparent;
   padding-bottom: 10px;
@@ -38,7 +42,10 @@ a.link-button{
 .post-button{
   margin-top: 30px;
 }
-
+.follow-btn,.edit-btn{
+  margin-right: 90px;
+  float:right
+}
 
  .simple-calendar {
   padding-top: 70px;
