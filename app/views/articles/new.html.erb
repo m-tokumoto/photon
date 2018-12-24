@@ -1,11 +1,18 @@
-<%= form_for(@article) do |f| %>
+<div class="container">
+	<div class="row">
+		<div class="col"></div>
+		<div class="col-mid-10">
+			<%= form_for(@article) do |f| %>
 
-	<label>title</label>
-	<%= f.text_field :title %>
+				<label>タイトル</label>
+				<%= f.text_field :title %>
 
-	<label>body</label>
-	<%= f.cktext_area :text %>
+				<%= f.cktext_area :text %>
 
-	<%= f.submit "投稿" %>
+				<%= f.submit "投稿" %>
 
-<% end %>
+			<% end %>
+		</div>
+		<div class="col"></div>
+	</div>
+</div>

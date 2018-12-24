@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :articles, only:[:new, :create, :show]
+  resources :articles, only:[:new, :create, :index, :show]
 
 
   get '/follow' => 'photos#follow', as: 'follow'

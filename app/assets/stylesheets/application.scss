@@ -47,6 +47,16 @@ a.link-button{
   float:right
 }
 
+.user-link-button{
+  text-decoration:none;
+  color: black;
+}
+
+.user-link-button:hover{
+  text-decoration:none;
+  color: gray;
+}
+
  .simple-calendar {
   padding-top: 70px;
 

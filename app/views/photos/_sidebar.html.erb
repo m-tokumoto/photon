@@ -5,12 +5,15 @@
   <% end %>
   <h6>人気のユーザー</h6>
   <% @users.each do |user| %>
-  	<div>
-    	<%= user.name %>
-    	<span>
-    		<i class="fas fa-user"></i>
-    		<%= user.followers.count %>
-    	</span>
-   </div>
+    <%= link_to user_path(user),class: "user-link-button" do %>
+      <div>
+          <%= attachment_image_tag user,:image,:fill,30,30,fallback: "no_image-30.png" %>
+          <p style="display: inline-block;"><%= user.name %></p>
+          <span>
+            <i class="fas fa-user"></i>
+            <%= user.followers.count %>
+          </span>
+      </div>
+    <% end %>
   <% end %>
 </div>
