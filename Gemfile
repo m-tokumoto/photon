@@ -75,5 +75,5 @@ gem 'ransack'
 gem 'kaminari', '~> 0.17.0'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '< 1.0.0'
 end
