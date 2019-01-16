@@ -32,6 +32,6 @@ Rails.application.routes.draw do
   get '/article_search' => 'articles#article_search',as: 'article_search'
   post '/article_search' => 'articles#article_search',as: 'articles_search'
 
-  get '/' => 'photos#index' ,as: 'root'
+  root 'photos#index'
 
 end
