@@ -2,7 +2,11 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col-mid-3">
-
+			<% if flash[:alert] %>
+				<div class="alert alert-danger">
+					<%= flash.alert %>
+				</div>
+			<% end %>
 			<h3>写真投稿フォーム</h3>
 
 			<%= form_for(@photo) do |f| %>

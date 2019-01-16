@@ -5,7 +5,10 @@
         </div>
 
         <div class= "col-md-9">
-
+        	<%= link_to "ALL", photos_path,class:"btn btn-dark" %>
+        	<% if user_signed_in? %>
+        		<%= link_to "TIME LINE", follow_path,class:"btn btn-outline-dark" %>
+        	<% end %>
         	<div class="row">
 
 			<% @photos.each do |photo| %>
@@ -17,12 +20,18 @@
 							<div class="card-text">
 								<%= render 'likes/like', { photo: photo } %>
 								<%= render 'users/photos_tag_list', tag_list: photo.tag_list %>
+								<% if user_signed_in? && current_user.id == 1 %>
+									<%= button_to "delete",photo_path(photo), method: :delete ,class: "btn btn-sm btn-danger" %>
+								<% end %>
 							</div>
 
 						</div>
 
 					</div>
 			<% end %>
+			<div class="col-md-12">
+				<%= paginate @photos %>
+			</div>
 			</div>
 		</div>
 	</div>

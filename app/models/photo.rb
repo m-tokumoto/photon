@@ -3,8 +3,10 @@ class Photo < ApplicationRecord
 	has_many :likes
 	has_many :users, through: :likes
 	attachment :image
-	
+
 	acts_as_taggable
+
+	validates :image, presence: true
 
 
 	def like_user(user_id)

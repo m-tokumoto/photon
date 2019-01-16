@@ -27,7 +27,9 @@
 
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    <span class="calendar-title"><%= start_date.year %>年<%= start_date.month %>月 </span>
+    <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %><br>
+    <div style="margin-top: 20px; width: 30px;height: 30px; background-color: white; display: inline-block;"></div>
+    <span>today <%= Date.today %></span>
   </div>
 </div>

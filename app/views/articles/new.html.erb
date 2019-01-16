@@ -2,6 +2,27 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col-mid-10">
+			<% if flash[:alert] %>
+				<div class="alert alert-danger">
+					<%= flash.alert %>
+				</div>
+			<% end %>
+			<h3>ブログ記事を投稿してみましょう！</h3>
+			<div class="row">
+				<div class="col-md-4">
+					<p>例）</p>
+					<p>・新しいカメラを買った！</p>
+					<p>・旅行先でいい写真が撮れた！</p>
+				</div>
+				<%= image_tag("2.png", :size => "100x100") %>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p>・料理を撮影する時のコツ</p>
+					<p>・覚えておきたい構図テクニック</p>
+				</div>
+				<%= image_tag("question.png", :size => "100x100") %>
+			</div>
 			<%= form_for(@article) do |f| %>
 
 				<label>タイトル</label>

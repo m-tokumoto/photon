@@ -1,5 +1,25 @@
-<%= render 'likes/like', { photo: @photo} %>
-
-<%= attachment_image_tag @photo, :image, :fill, 600, 400, format: 'jpeg' %>
-
-<%= link_to @photo.user.name, user_path(@photo.user) %>
+<div class="container" >
+	<div class="row photo-container">
+		<div class="col-md-2"></div>
+		<div class="col-md-10" >
+			<%= attachment_image_tag @photo, :image, :fill, 600, 400, format: 'jpeg' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<%= link_to user_path(@photo.user), class: "user-link-button" do %>
+			<div>
+				<%= attachment_image_tag @photo.user,:image,:fill,35,35,fallback: "no_image-40.png" %>
+				<h5 style="display: inline-block;"><%= @photo.user.name %></h2>
+			</div>
+			<% end %>
+		</div>
+		<div class="col-md-3"></div>
+		<div class="col-md-4">
+			<%= render 'likes/like_30x30', { photo: @photo} %>
+			<span style="font-size: 20px;"><%= @photo.likes_count %></span>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>

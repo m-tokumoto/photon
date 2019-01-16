@@ -2,10 +2,12 @@
 	<div class = "row">
         <div class= "col-md-4">
             <div class= "sidebar">
-            	<% if @user.id == current_user.id %>
-            		<%= link_to "編集",edit_user_path(@user),class: "btn btn-primary btn-sm edit-btn" %>
-            	<% end %>
-				<%= render 'follow_form' %>
+            	<% if user_signed_in? %>
+	            	<% if @user.id == current_user.id %>
+	            		<%= link_to "編集",edit_user_path(@user),class: "btn btn-primary btn-sm edit-btn" %>
+	            	<% end %>
+					<%= render 'follow_form' %>
+				<% end %>
 				<div>
 					<%= attachment_image_tag @user,:image,:fill,35,35,fallback: "no_image-40.png" %>
 					<h2 style="display: inline-block;"><%= @user.name %></h2>
@@ -28,6 +30,7 @@
         		<span><%= image_tag("heart_red.png", :size => "14x14") %></span>
         		<span>FAVORITE PHOTOS</span>
         	<% end %>
+        	<%= link_to "ARTICLES", user_articles_path(@user),class:"btn btn-outline-dark" %>
 			<div class="row">
 				<% @photos.each do |photo| %>
 						<div class="col-md-5 content">
@@ -40,6 +43,9 @@
 							</div>
 						</div>
 				<% end %>
+				<div class="col-md-12">
+					<%= paginate @photos %>
+				</div>
 			</div>
 		</div>
 	</div>

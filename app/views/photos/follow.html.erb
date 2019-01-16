@@ -1,1 +1,30 @@
-<h2>follow page</h2>
+<div class="container">
+	<div class = "row">
+        <div class= "col-md-3">
+        	<%= render 'sidebar' %>
+        </div>
+
+        <div class= "col-md-9">
+        	<%= link_to "ALL", photos_path,class:"btn btn-outline-dark" %>
+        	<%= link_to "TIME LINE", follow_path,class:"btn btn-dark" %>
+        	<div class="row">
+
+			<% @photos.each do |photo| %>
+
+					<div class="col-md-4" >
+
+						<div class = "card photo-card border border-0">
+							<%= link_to attachment_image_tag(photo, :image, :fill, 600, 400, format: 'jpeg',class: "card-img-top"), photo_path(photo.id) %>
+							<div class="card-text">
+								<%= render 'likes/like', { photo: photo } %>
+								<%= render 'users/photos_tag_list', tag_list: photo.tag_list %>
+							</div>
+
+						</div>
+
+					</div>
+			<% end %>
+			</div>
+		</div>
+	</div>
+</div>

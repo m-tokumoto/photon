@@ -2,10 +2,12 @@
 	<div class = "row">
         <div class= "col-md-4">
             <div class= "sidebar">
-            	<% if @user.id == current_user.id %>
-            		<%= link_to "編集",edit_user_path(@user),class: "btn btn-primary btn-sm edit-btn" %>
-            	<% end %>
-				<%= render 'follow_form' %>
+            	<% if user_signed_in? %>
+	            	<% if @user.id == current_user.id %>
+	            		<%= link_to "編集",edit_user_path(@user),class: "btn btn-primary btn-sm edit-btn" %>
+	            	<% end %>
+					<%= render 'follow_form' %>
+				<% end %>
 				<div>
 					<%= attachment_image_tag @user,:image,:fill,35,35,fallback: "no_image-40.png" %>
 					<h2 style="display: inline-block;"><%= @user.name %></h2>
@@ -23,23 +25,24 @@
             </div>
           </div>
 		<div class="col-md-8">
-        	<%= link_to "PHOTOS", user_path(@user),class:"btn btn-dark" %>
+        	<%= link_to "PHOTOS", user_path(@user),class:"btn btn-outline-dark" %>
         	<%= link_to user_favorite_photos_path(@user),class:"btn btn-outline-dark" do %>
         		<span><%= image_tag("heart_red.png", :size => "14x14") %></span>
         		<span>FAVORITE PHOTOS</span>
         	<% end %>
+        	<%= link_to "ARTICLES", user_articles_path(@user),class:"btn btn-dark" %>
 			<div class="row">
-				<% @photos.each do |photo| %>
-						<div class="col-md-5 content">
-							<div class = "card photo-card border border-0">
-								<%= link_to attachment_image_tag(photo, :image, :fill, 600, 400, format: 'jpeg',class: "card-img-top"), photo_path(photo.id) %>
-								<div class="card-text">
-									<%= render 'likes/like', { photo: photo } %>
-									<%= render 'photos_tag_list', tag_list: photo.tag_list %>
-								</div>
-							</div>
-						</div>
+				<% @articles.each do |article| %>
+				    <%= link_to article_path(article),class: "list-group-item list-group-item-light list-group-item-action" do %>
+				      <div class="d-flex w-100 justify-content-between">
+					      <h4><%= article.title %></h4>
+					      <small><%= article.created_at.strftime('%Y年%m月%d日') %></small>
+				  	  </div>
+				    <% end %>
 				<% end %>
+				<div class="col-md-12">
+					<%= paginate @articles %>
+				</div>
 			</div>
 		</div>
 	</div>

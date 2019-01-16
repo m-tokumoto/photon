@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 	def show
 		@user  = User.find(params[:id])
 		@calendar_photos = Photo.where(user_id: params[:id])
-		@photos = Photo.where(user_id: @user.id)
+		@photos = Photo.where(user_id: @user.id).page(params[:page]).per(20).order("created_at DESC")
 	end
 
 	def edit
@@ -24,7 +24,13 @@ class UsersController < ApplicationController
 	def favorite
 		@user  = User.find(params[:user_id])
 		@calendar_photos = Photo.where(user_id: @user.id)
-		@photos = @user.like_photos
+		@photos = @user.like_photos.page(params[:page]).per(20).order("created_at DESC")
+	end
+
+	def articles
+		@user  = User.find(params[:user_id])
+		@calendar_photos = Photo.where(user_id: @user.id)
+		@articles = Article.where(user_id: @user.id).page(params[:page]).per(20).order("created_at DESC")
 	end
 
 	def following

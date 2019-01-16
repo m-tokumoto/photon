@@ -15,25 +15,25 @@
             <%= link_to "Photon",photos_path,class:"nav-link" %>
           </li>
           <li class = "nav-item">
-            <%= link_to "About",photos_path,class:"nav-link" %>
-          </li>
-          <li class = "nav-item">
-            <%= link_to "Article",articles_path,class:"nav-link" %>
+            <%= link_to "ARTICLE",articles_path,class:"nav-link" %>
           </li>
 
           <% if user_signed_in? %>
             <li class = "nav-item">
-              <%= link_to "#{current_user.name}'s Photos",user_path(current_user.id),class:"nav-link" %>
+              <%= link_to "MY PHOTOS",user_path(current_user.id),class:"nav-link" %>
             </li>
             <li class = "nav-item">
-              <%= link_to "post new photo", new_photo_path,class:"nav-link" %>
+              <%= link_to "NEW PHOTO", new_photo_path,class:"nav-link" %>
             </li>
             <li class = "nav-item">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete,class:"nav-link" %>
+            <%= link_to "NEW ARTICLE",new_article_path,class:"nav-link" %>
+            </li>
+            <li class = "nav-item">
+              <%= link_to "LOG OUT", destroy_user_session_path, method: :delete,class:"nav-link" %>
             </li>
           <% else %>
             <li class = "nav-item">
-              <%= link_to "Log in", new_user_session_path,class:"nav-link" %>
+              <%= link_to "LOG IN", new_user_session_path,class:"nav-link" %>
             </li>
           <% end %>
           </ul>
@@ -42,5 +42,6 @@
         <%= yield %>
       </div>
       <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js"></script>
+      <script src
   </body>
 </html>

@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  # database: db/production.sqlite3    デプロイ設定でコメントアウト　以下３行追加
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
