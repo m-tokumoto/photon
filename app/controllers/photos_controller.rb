@@ -71,7 +71,7 @@ class PhotosController < ApplicationController
 
 	def tag_search
 	    @query = Photo.ransack(params[:q])
-		@photos = @query.result.order("created_at DESC")
+		@photos = @query.result.page(params[:page]).per(45).order("created_at DESC")
 		@users = User.where.not(id: 1).order("follower_count DESC").limit(10)
 		@tags = ActsAsTaggableOn::Tag.most_used
 		render :index
