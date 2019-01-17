@@ -73,6 +73,7 @@ gem 'bootstrap-tagsinput-rails'
 gem 'ckeditor'
 gem 'ransack'
 gem 'kaminari', '~> 0.17.0'
+gem 'carrierwave'
 
 group :production do
   gem 'pg', '0.20.0'
